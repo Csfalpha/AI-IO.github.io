@@ -6,7 +6,7 @@
         content="AI-IO: An Aerodynamics-Inspired Real-Time Inertial Odometry for Quadrotors">
   <meta name="keywords" content="Aerial Systems: Perception and Autonomy, Inertial Odometry, Deep Learning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MasterRacing</title>
+  <title>AI-IO</title>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
@@ -126,16 +126,13 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline controls height="100%">
+      <video id="teaser" autoplay muted loop playsinline controls height="100%" width="100%">
         <source src="./static/videos/formal-video-compressed.mp4"
                 type="video/mp4">
       </video>
-      </div>
+    </div>
   </div>
 </section>
-
-
-
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -160,90 +157,88 @@
         </div>
       </div>
     </div>
-    <hr>
-    
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full">
-        <h2 class="title is-3">Method</h2>
-        
-        <div class="columns is-centered">
-          
-          <div class="column is-half">
-            <div class="content has-text-justified">
-              <img src="./static/images/network_01.png"
-                   class="framework-image"
-                   alt="Method part 1 overview."/>
-              <p>
-                Proposed transformer-based architecture: Verified measurements are normalized, encoded, and fed into 
-                a transformer to capture spatiotemporal dependencies. Finally, two fully connected decoders predict 
-                velocity and uncertainty.
-              </p>
-            </div>
-          </div>
-
-          <div class="column is-half">
-            <div class="content has-text-justified">
-              <img src="./static/images/system_01.png"
-                   class="framework-image"
-                   alt="Method part 2 overview."/>
-              <p>
-                Real-time system overview: IMU-derived acceleration, angular velocity, and rotor speed (via bidirectional 
-                DShot) are time-synchronized and fed into the network for velocity prediction. Subsequently, EKF performs 
-                prediction and update steps, outputting pose information to the controller for closed-loop control.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Experimental Results</h2>
-    
-    <div class="hero-body">
-      <div class="container">
-        <div id="results-carousel" class="carousel results-carousel">
-          
-          <div class="item">
-            <div class="content has-text-centered">
-              <video autoplay muted loop playsinline controls width="100%">
-                <source src="./static/videos/dataset result-1.mp4" type="video/mp4">
-              </video>
-              <p>
-                Comparison on different datasets
-              </p>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="content has-text-centered">
-              <video autoplay muted loop playsinline controls width="100%">
-                <source src="./static/videos/real world result 1-1.mp4" type="video/mp4">
-              </video>
-              <p>Real world validation in low light conditions</p>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="content has-text-centered">
-              <video autoplay muted loop playsinline controls width="100%">
-                <source src="./static/videos/real world result 2-1.mp4" type="video/mp4">
-              </video>
-              <p>Comparison under different lighting conditions</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    
   </div>
 </section>
 
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <div id="method-carousel" class="carousel results-carousel">
+        
+        <div class="item">
+          <div class="content has-text-centered" style="padding: 1rem;">
+            <img src="./static/images/network_01.png"
+                 class="framework-image"
+                 alt="Method part 1 overview."
+                 style="max-height: 400px; object-fit: contain; margin-bottom: 15px;"/>
+            <p class="has-text-justified">
+              Proposed transformer-based architecture: Verified measurements are normalized, encoded, and fed into 
+              a transformer to capture spatiotemporal dependencies. Finally, two fully connected decoders predict 
+              velocity and uncertainty.
+            </p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="content has-text-centered" style="padding: 1rem;">
+            <img src="./static/images/system_01.png"
+                 class="framework-image"
+                 alt="Method part 2 overview."
+                 style="max-height: 400px; object-fit: contain; margin-bottom: 15px;"/>
+            <p class="has-text-justified">
+              Real-time system overview: IMU-derived acceleration, angular velocity, and rotor speed (via bidirectional 
+              DShot) are time-synchronized and fed into the network for velocity prediction. Subsequently, EKF performs 
+              prediction and update steps, outputting pose information to the controller for closed-loop control.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered" style="margin-bottom: 30px;">Experimental Results</h2>
+      
+      <div id="results-carousel" class="carousel results-carousel">
+        
+        <div class="item">
+          <div class="content has-text-centered" style="padding: 1rem;">
+            <video autoplay muted loop playsinline controls width="100%">
+              <source src="./static/videos/dataset result-1.mp4" type="video/mp4">
+            </video>
+            <p style="margin-top: 15px; font-weight: bold;">
+              Comparison on different datasets
+            </p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="content has-text-centered" style="padding: 1rem;">
+            <video autoplay muted loop playsinline controls width="100%">
+              <source src="./static/videos/real world result 1-1.mp4" type="video/mp4">
+            </video>
+            <p style="margin-top: 15px; font-weight: bold;">Real world validation in low light conditions</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="content has-text-centered" style="padding: 1rem;">
+            <video autoplay muted loop playsinline controls width="100%">
+              <source src="./static/videos/real world result 2-1.mp4" type="video/mp4">
+            </video>
+            <p style="margin-top: 15px; font-weight: bold;">Comparison under different lighting conditions</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
@@ -257,17 +252,14 @@
   </div>
 </section>
 
-
-
-
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
       <a class="icon-link"
-         href="./static/masterracing.pdf">
+         href="./static/AI-IO_paper.pdf">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="https://github.com/MasterDroneRacing/MasterRacing" class="external-link" disabled>
+      <a class="icon-link" href="https://github.com/SJTU-ViSYS-team/AI-IO" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
@@ -275,8 +267,7 @@
       <div class="column is-8">
         <div class="content">
           <p>
-            We thank <a
-              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> for providing the template.
+            We thank <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> for providing the template.
           </p>
         </div>
       </div>
