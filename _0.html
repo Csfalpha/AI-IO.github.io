@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="AI-IO: An Aerodynamics-Inspired Real-Time Inertial Odometry for Quadrotors">
+  <meta name="keywords" content="Inertial Odometry, Quadrotor, Transformer, EKF, IMU, ICRA 2026">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI-IO</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/master.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/js/all.min.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">AI-IO: An Aerodynamics-Inspired Real-Time Inertial Odometry for Quadrotors</h1>
+
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/jiahaocui">Jiahao Cui</a><sup>*</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/yufengsjtu">Feng Yu</a><sup>*</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/linzuozhang">Linzuo Zhang</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/henryhuyu">Yu Hu</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=y6FsLDQAAAAJ&hl=zh-CN&oi=ao">Danping Zou</a><sup>†</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Shanghai Jiao Tong University</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal contribution,</span>
+            <span class="author-block"><sup>†</sup>Corresponding author</span>
+          </div>
+
+          <div class="is-size-4 publication-veneu"> ICRA 2026 </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="./static/AI-IO.pdf"
+                     class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2603.00597v1"
+                     class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/SJTU-ViSYS-team/AI-IO"
+                     class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teaser Video Section -->
+    <div class="teaser-section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h2 class="teaser-title has-text-centered">Teaser Video</h2>
+            <p class="video-placeholder">Video coming soon...</p>
+            <!-- Uncomment and add video later:
+            <video id="teaser" autoplay muted loop playsinline controls>
+              <source src="./static/videos/demo.mp4" type="video/mp4">
+            </video>
+            -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-three-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Inertial Odometry (IO) has gained significant attention in quadrotor applications due to its lightweight design, low cost, and robust performance. However, most existing learning-based IO systems for quadrotors either use only IMU data or include additional dynamics-related inputs without a principled formulation of the underlying physical model. This lack of interpretability hampers model's ability to generalize and often limits its accuracy. In this work, we approach inertial odometry learning from a different perspective. Inspired by aerodynamic model and IMU measurement model, we identify rotor speed as a critical physical quantity required for inertial odometry and design a transformer-based architecture—the first to be applied in quadrotor IO—that exploits temporal dependencies more effectively. By incorporating rotor speed measurements, our model improves velocity prediction accuracy by <strong>36.9%</strong> on existing methods. Furthermore, we provide a real-world quadrotor flight dataset capturing IMU measurements and rotor speed for high-speed motion. Finally, combined with an uncertainty-aware extended Kalman filter (EKF), our framework achieves superior accuracy, generalization, and real-time performance on multiple datasets and real-world systems.
+          </p>
+
+          <div class="key-contributions">
+            <h3>Key Contributions</h3>
+            <ul>
+              <li><strong>Novel Aerodynamics-Inspired Perspective</strong> — Derive physical model from quadrotor aerodynamics, offering physics-based explanation of estimation errors and validating rotor speed as a critical measurement</li>
+              <li><strong>AI-IO Framework</strong> — Design a lightweight transformer-based velocity estimator coupled with an uncertainty-aware EKF, enabling real-time, high-precision pose estimation</li>
+              <li><strong>Comprehensive Dataset</strong> — Establish a highly maneuverable quadrotor dataset using a self-built platform, filling a critical gap in datasets for agile quadrotor motions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Method Overview Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-three-fifths">
+        <h2 class="title is-3">Method Overview</h2>
+        <div class="content">
+          <p>Our approach combines aerodynamics-inspired physics modeling with transformer-based learning and uncertainty-aware Extended Kalman Filter for robust real-time quadrotor state estimation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-three-fifths">
+        <h2 class="title is-3">Citation</h2>
+        <p class="citation-text">
+          If you find our work useful, please cite:
+        </p>
+        <pre class="citation-bibtex">
+@inproceedings{cui2026aio,
+  title={AI-IO: An Aerodynamics-Inspired Real-Time Inertial Odometry for Quadrotors},
+  author={Cui, Jiahao and Yu, Feng and Zhang, Linzuo and Hu, Yu and Zou, Danping},
+  booktitle={2026 IEEE International Conference on Robotics and Automation (ICRA)},
+  year={2026},
+  organization={IEEE}
+}</pre>
+        <div class="publication-links is-centered">
+          <a href="./static/AI-IO.pdf" class="button is-link is-small">
+            <i class="fas fa-download"></i> Download PDF
+          </a>
+          <a href="https://github.com/SJTU-ViSYS-team/AI-IO" class="button is-link is-small">
+            <i class="fab fa-github"></i> View Code
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        <p class="footer-text">
+          © 2026 <a href="https://github.com/SJTU-ViSYS-team">SJTU-ViSYS Team</a>. All rights reserved.
+        </p>
+        <div class="footer-links">
+          <a href="https://github.com/SJTU-ViSYS-team/AI-IO">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://scholar.google.com/citations?user=y6FsLDQAAAAJ&hl=zh-CN&oi=ao">
+            <i class="ai ai-google-scholar"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = anchor.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId) || document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
